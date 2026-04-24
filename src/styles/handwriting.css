@@ -1,0 +1,432 @@
+.practice-pane-card {
+  flex: 1 1 auto;
+}
+
+.practice-pane-card__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+
+.practice-row-head,
+.practice-row-head__group,
+.practice-button-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.practice-row-head {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.practice-row-head__group,
+.practice-button-group {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.practice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0.38rem 0.72rem;
+  border-radius: var(--pill-radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.practice-badge--accent {
+  border-color: rgba(159, 211, 199, 0.18);
+  background: rgba(159, 211, 199, 0.08);
+  color: #dcfff6;
+}
+
+.practice-prompt-block,
+.practice-question-card,
+.practice-feedback-card {
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+}
+
+.practice-prompt-block {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.practice-prompt-title {
+  min-height: 1.15em;
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.practice-prompt-title--word {
+  text-align: center;
+}
+
+.practice-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0.42rem 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.practice-toggle:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.practice-hint-card {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.practice-hint-label {
+  margin-bottom: 4px;
+  color: #b9c8ff;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.practice-question-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.practice-prompt-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.handwriting-canvas {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.handwriting-canvas__surface {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 188px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(10, 14, 19, 0.94), rgba(17, 22, 29, 0.96));
+  overflow: hidden;
+}
+
+.handwriting-canvas__element {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.handwriting-canvas__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.88rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.handwriting-canvas__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.practice-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0.44rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.practice-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.practice-button:disabled {
+  opacity: 0.46;
+  cursor: not-allowed;
+}
+
+.practice-button--soft {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.practice-button--accent {
+  border-color: rgba(159, 211, 199, 0.18);
+  background: rgba(159, 211, 199, 0.11);
+  color: #e8fff9;
+}
+
+.practice-button--success {
+  border-color: rgba(142, 217, 184, 0.16);
+  background: rgba(142, 217, 184, 0.1);
+  color: #e4fff1;
+}
+
+.practice-button--danger {
+  border-color: rgba(255, 154, 154, 0.16);
+  background: rgba(255, 154, 154, 0.1);
+  color: #fff0f0;
+}
+
+.practice-button--icon {
+  width: 36px;
+  min-width: 36px;
+  padding: 0;
+}
+
+.practice-feedback-card {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.practice-status-banner {
+  min-height: 38px;
+  padding: 9px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.practice-status-banner--pending {
+  border-color: rgba(159, 211, 199, 0.14);
+  background: rgba(159, 211, 199, 0.08);
+}
+
+.practice-status-banner--success {
+  border-color: rgba(142, 217, 184, 0.16);
+  background: rgba(142, 217, 184, 0.1);
+}
+
+.practice-status-banner--danger {
+  border-color: rgba(255, 154, 154, 0.16);
+  background: rgba(255, 154, 154, 0.08);
+}
+
+.practice-answer-line {
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.practice-feedback-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 188px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.practice-snapshot,
+.practice-snapshot--empty {
+  width: 100%;
+  min-height: 108px;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: #0d1117;
+}
+
+.practice-snapshot {
+  display: block;
+  object-fit: contain;
+}
+
+.practice-snapshot--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.practice-help {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.practice-self-judge,
+.practice-bottom-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.practice-bottom-actions {
+  justify-content: flex-end;
+}
+
+.practice-analysis-card--fill {
+  flex: 1 1 auto;
+}
+
+.practice-analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.practice-analysis-item {
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.practice-analysis-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.practice-analysis-label {
+  margin-bottom: 4px;
+  color: #b9c8ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.practice-analysis-value {
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.38;
+}
+
+.practice-analysis-note {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.42;
+}
+
+.practice-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.practice-score-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+}
+
+.practice-score-label,
+.practice-score-value {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.practice-score-track {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--pill-radius);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.practice-score-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+@media (max-width: 1024px) {
+  .practice-pane-card__body,
+  .practice-prompt-block,
+  .practice-question-card,
+  .practice-feedback-card {
+    padding: 10px;
+  }
+
+  .practice-prompt-title {
+    font-size: 1.46rem;
+  }
+
+  .practice-badge,
+  .practice-button {
+    min-height: 34px;
+    padding: 0.38rem 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .practice-button--icon {
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+  }
+
+  .handwriting-canvas__surface {
+    min-height: 172px;
+  }
+
+  .practice-feedback-grid {
+    grid-template-columns: minmax(0, 168px) minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .practice-snapshot,
+  .practice-snapshot--empty {
+    min-height: 98px;
+  }
+}

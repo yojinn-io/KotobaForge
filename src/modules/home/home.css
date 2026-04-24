@@ -397,6 +397,26 @@
   line-height: 1.38;
 }
 
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .home-analysis-layout {
+    grid-template-columns: minmax(0, 1.16fr) minmax(320px, 0.92fr);
+  }
+
+  .home-analysis-grid {
+    grid-template-columns: 104px repeat(3, minmax(0, 1fr));
+    grid-template-rows: 140px 84px 76px;
+  }
+
+  .home-overview-card {
+    padding: 10px 12px;
+  }
+
+  .home-metric-card,
+  .home-mini-card {
+    padding: 9px 10px;
+  }
+}
+
 @media (max-width: 1024px) {
   .home-left-stack > .home-modules-panel {
     flex-basis: 172px;

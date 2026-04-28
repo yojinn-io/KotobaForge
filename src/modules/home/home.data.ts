@@ -41,13 +41,13 @@ export const homeOverview = {
 export const homeMetricCards: HomeMetricCard[] = [
   { label: '累計単語', value: '1,248', note: '今週 +84' },
   { label: '累計造句', value: '326', note: '今週 +21' },
-  { label: '日誌連続', value: '14日', note: '過去最高 18日' },
+  { label: '日誌連続', value: '14日', note: '最高 18日' },
   { label: '対話評価', value: '76%', note: '今週 +4' },
 ];
 
 export const homeMiniCards: HomeMiniCard[] = [
-  { label: '今週いちばん伸びた項目', value: '発音 +8', tone: 'good' },
-  { label: '今週の注意項目', value: '助詞 -3', tone: 'warn' },
+  { label: '今週一番伸びた', value: '発音 +8', tone: 'good' },
+  { label: '今週の注意', value: '助詞 -3', tone: 'warn' },
   { label: '今日の負荷', value: '中' },
 ];
 
@@ -81,20 +81,20 @@ export const homeRadarAppearance: RadarAppearance = {
   splitAreaColors: ['rgba(255,255,255,.015)', 'rgba(255,255,255,.025)'],
 };
 
-export const homeTodoItems: HomeListItem[] = [
-  { title: '単語復習', subtitle: '漢字→読み 6問 / 文脈 2問', meta: '8分' },
-  { title: '造句', subtitle: 'N3文法 3問 / 助詞補強', meta: '7分' },
-  { title: '跟読 + 日誌', subtitle: '音読確認 4本 / 日誌 1本', meta: '9分' },
-];
-
 export const homeAdvice = {
-  intro:
-    '現在は学習量を増やすより、短くても正確な出力を積み重ねる方が効率的です。とくに助詞と抑揚の修正を優先すると、全体の安定度が上がります。',
-  items: [
-    '日誌では毎回「理由」を1文入れる',
-    '跟読では語尾の抑揚を意識する',
-    '造句では似た助詞の差を比較する',
-  ],
+  badge: '今週の重点',
+  markdown: `## 今週の方針
+現在は学習量を増やすより、**短くても正確な出力**を積み重ねる方が効率的です。とくに助詞と抑揚の修正を優先すると、全体の安定度が上がります。
+
+### 推奨タスク
+- **単語復習**: 漢字→読み 6問 / 文脈 2問（8分）
+- **造句**: N3文法 3問 / 助詞補強（7分）
+- **跟読 + 日誌**: 音読確認 4本 / 日誌 1本（9分）
+
+### 出力時の注意
+- 日誌では毎回「理由」を1文入れる
+- 跟読では語尾の抑揚を意識する
+- 造句では似た助詞の差を比較する`,
 };
 
 export const homeWeaknessItems: HomeListItem[] = [

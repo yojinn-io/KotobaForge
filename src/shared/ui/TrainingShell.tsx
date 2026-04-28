@@ -32,11 +32,11 @@ export function TrainingShell({
       />
 
       <main className={['training-grid', swapped ? 'is-swapped' : ''].filter(Boolean).join(' ')}>
-        <section className="training-pane training-pane--practice">
-          <div className="training-pane__inner">{left}</div>
-        </section>
+        {/* <section className="training-pane training-pane--practice"> */}
+          {left}
+        {/* </section> */}
         <aside className="training-pane training-pane--analysis">
-          <div className="training-pane__inner">{right}</div>
+          {right}
         </aside>
       </main>
     </AppShell>

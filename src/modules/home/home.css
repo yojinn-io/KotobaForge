@@ -7,6 +7,13 @@
   overflow: hidden;
 }
 
+.home-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
 .home-left-stack,
 .home-right-stack {
   min-width: 0;
@@ -26,13 +33,13 @@
   flex: 0 0 176px;
 }
 
-.home-right-stack > .home-todo-panel,
 .home-right-stack > .home-advice-panel {
-  flex: 0 0 31%;
+  flex: 1 1 58%;
 }
 
 .home-right-stack > .home-weakness-panel {
-  flex: 1 1 auto;
+  flex: 0 1 42%;
+  min-height: 178px;
 }
 
 .home-analysis-panel__body,
@@ -332,8 +339,7 @@
   white-space: nowrap;
 }
 
-.home-side-list,
-.home-advice-list {
+.home-side-list {
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -383,18 +389,56 @@
   font-weight: 800;
 }
 
-.home-advice-copy {
+.home-advice-markdown {
+  min-height: 0;
+  overflow: auto;
   font-size: 0.85rem;
-  line-height: 1.55;
+  line-height: 1.48;
+  color: var(--text);
 }
 
-.home-advice-item {
-  padding: 8px 9px;
-  border-radius: 12px;
-  background: rgba(159, 211, 199, 0.05);
-  border: 1px solid rgba(159, 211, 199, 0.1);
-  font-size: 0.79rem;
-  line-height: 1.38;
+.home-advice-markdown__heading {
+  margin: 0 0 6px;
+  font-size: 0.94rem;
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.home-advice-markdown__heading:not(:first-child) {
+  margin-top: 12px;
+}
+
+.home-advice-markdown__paragraph {
+  margin: 0;
+  color: rgba(246, 247, 248, 0.88);
+}
+
+.home-advice-markdown__paragraph + .home-advice-markdown__paragraph {
+  margin-top: 7px;
+}
+
+.home-advice-markdown__list {
+  margin: 0;
+  padding-left: 1.08rem;
+  color: rgba(246, 247, 248, 0.88);
+}
+
+.home-advice-markdown__list li {
+  margin-top: 5px;
+}
+
+.home-advice-markdown__list li::marker {
+  color: #9fd3c7;
+}
+
+.home-advice-markdown strong {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.home-advice-markdown em {
+  color: #d6c59f;
+  font-style: normal;
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -422,9 +466,8 @@
     flex-basis: 172px;
   }
 
-  .home-right-stack > .home-todo-panel,
   .home-right-stack > .home-advice-panel {
-    flex-basis: 29%;
+    flex-basis: 59%;
   }
 
   .home-analysis-layout {

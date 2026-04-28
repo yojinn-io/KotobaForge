@@ -15,6 +15,7 @@ export type RadarSeriesEntry = {
 export type RadarAppearance = {
   center?: [string, string];
   radius?: string;
+  showLegend?: boolean;
   splitNumber?: number;
   axisNameColor?: string;
   axisNameFontSize?: number;
@@ -44,7 +45,19 @@ export function createRadarOption({
       borderColor: 'rgba(255,255,255,.12)',
       textStyle: { color: '#f6f7f8' },
     },
-    legend: { show: false },
+    legend: {
+      show: appearance?.showLegend ?? false,
+      top: 0,
+      right: 0,
+      itemWidth: 10,
+      itemHeight: 6,
+      textStyle: {
+        color: 'rgba(246,247,248,.78)',
+        fontSize: 11,
+        fontWeight: 700,
+      },
+      data: series.map((entry) => entry.name),
+    },
     radar: {
       center: appearance?.center ?? ['50%', '55%'],
       radius: appearance?.radius ?? '68%',

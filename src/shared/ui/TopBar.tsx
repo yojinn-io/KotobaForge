@@ -96,13 +96,12 @@ export function TopBar({ left, center, right, variant = 'training' }: TopBarProp
         {isSupported ? (
           <button
             type="button"
-            className="shell-button"
+            className="shell-button shell-button--icon"
             onClick={handleFullscreenToggle}
             aria-label={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
             title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
           >
             <i className={`bi ${isFullscreen ? 'bi-fullscreen-exit' : 'bi-fullscreen'}`} />
-            {isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
           </button>
         ) : null}
       </div>

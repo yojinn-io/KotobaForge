@@ -129,6 +129,14 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.shell-button--icon {
+  width: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  justify-content: center;
+}
+
 .dashboard-grid,
 .training-grid {
   flex: 1 1 auto;
@@ -166,6 +174,8 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--panel-radius);
@@ -178,16 +188,6 @@
 
 .training-pane--analysis {
   grid-area: analysis;
-}
-
-.training-pane__inner {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  overflow: hidden;
 }
 
 .panel-card {
@@ -623,6 +623,12 @@
     min-height: 36px;
     padding: 0.4rem 0.68rem;
     font-size: 0.8rem;
+  }
+
+  .topbar--dashboard .shell-button--icon {
+    width: 36px;
+    min-width: 36px;
+    padding: 0;
   }
 
   .topbar-page-title {

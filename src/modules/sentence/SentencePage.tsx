@@ -111,11 +111,9 @@ export function SentencePage() {
       left={
         <PanelCard className="practice-pane-card" bodyClassName="practice-pane-card__body">
           <div className="practice-row-head">
-            <div className="practice-row-head__group">
-              <div className="practice-badge practice-badge--accent">
-                <i className="bi bi-chat-square-text" />
-                造句訓練
-              </div>
+            <div className="practice-badge practice-badge--accent">
+              <i className="bi bi-chat-square-text" />
+              造句訓練
             </div>
 
             <div className="practice-row-head__group">

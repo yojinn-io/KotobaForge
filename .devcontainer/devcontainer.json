@@ -1,0 +1,32 @@
+
+{
+  "name": "NodeJS-Dev-Env",
+  // 直接使用微軟維護的優化鏡像，已內含 Node, Git, Zsh, Oh My Zsh
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  // 當容器建立完成後，自動執行安裝指令
+  "postCreateCommand": "npm install",
+
+  // 映射連接埠，讓你用 Mac 瀏覽器打開 localhost:3000
+  "forwardPorts": [4173],
+
+  "portsAttributes": {
+    "4173": {
+      "label": "App Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // 自定義容器內的 VS Code 設定
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint", // 自動在容器內安裝常用的插件
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+
+  // 以非 root 用戶運行（避免檔案權限亂掉）
+  "remoteUser": "node"
+}

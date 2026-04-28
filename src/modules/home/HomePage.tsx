@@ -3,7 +3,6 @@ import { DashboardShell } from '../../shared/ui/DashboardShell';
 import { AdvicePanel } from './AdvicePanel';
 import { ModuleShortcutGrid } from './ModuleShortcutGrid';
 import { OverallAnalysisPanel } from './OverallAnalysisPanel';
-import { TodoPanel } from './TodoPanel';
 import { WeaknessPanel } from './WeaknessPanel';
 import {
   homeAdvice,
@@ -14,7 +13,6 @@ import {
   homeRadarIndicators,
   homeRadarSeries,
   homeTopBarPills,
-  homeTodoItems,
   homeWeaknessItems,
 } from './home.data';
 import './home.css';
@@ -36,10 +34,16 @@ export function HomePage() {
         </div>
       }
       actions={
-        <button type="button" className="shell-button">
-          <i className="bi bi-gear" />
-          設定
-        </button>
+        <div className="home-header-actions">
+          <button type="button" className="shell-button">
+            <i className="bi bi-lightning-charge" />
+            特訓
+          </button>
+          <button type="button" className="shell-button">
+            <i className="bi bi-gear" />
+            設定
+          </button>
+        </div>
       }
       left={
         <div className="home-left-stack">
@@ -56,8 +60,7 @@ export function HomePage() {
       }
       right={
         <div className="home-right-stack">
-          <TodoPanel items={homeTodoItems} />
-          <AdvicePanel intro={homeAdvice.intro} items={homeAdvice.items} />
+          <AdvicePanel badge={homeAdvice.badge} markdown={homeAdvice.markdown} />
           <WeaknessPanel items={homeWeaknessItems} />
         </div>
       }

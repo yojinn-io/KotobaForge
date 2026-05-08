@@ -3,7 +3,12 @@ export type HandPoint = {
   y: number;
 };
 
-export type HandStroke = HandPoint[];
+export type DrawingMode = 'pen' | 'eraser';
+
+export type HandStroke = {
+  points: HandPoint[];
+  mode: DrawingMode;
+};
 
 type HandwritingStyle = {
   lineWidth?: number;
@@ -41,40 +46,56 @@ export function drawHandStroke(
   context: CanvasRenderingContext2D,
   stroke: HandStroke,
 ) {
-  if (stroke.length === 0) {
+  if (stroke.points.length === 0) {
     return;
   }
 
-  if (stroke.length === 1) {
+  context.save();
+  context.globalCompositeOperation =
+    stroke.mode === 'eraser' ? 'destination-out' : 'source-over';
+  context.lineWidth = stroke.mode === 'eraser' ? 22 : 4;
+
+  if (stroke.points.length === 1) {
     context.beginPath();
-    context.arc(stroke[0].x, stroke[0].y, context.lineWidth / 2, 0, Math.PI * 2);
+    context.arc(
+      stroke.points[0].x,
+      stroke.points[0].y,
+      context.lineWidth / 2,
+      0,
+      Math.PI * 2,
+    );
     context.fill();
+    context.restore();
     return;
   }
 
   context.beginPath();
-  context.moveTo(stroke[0].x, stroke[0].y);
+  context.moveTo(stroke.points[0].x, stroke.points[0].y);
 
-  for (let index = 1; index < stroke.length; index += 1) {
-    context.lineTo(stroke[index].x, stroke[index].y);
+  for (let index = 1; index < stroke.points.length; index += 1) {
+    context.lineTo(stroke.points[index].x, stroke.points[index].y);
   }
 
   context.stroke();
+  context.restore();
 }
 
 export function redrawHandwriting(
   canvas: HTMLCanvasElement,
   context: CanvasRenderingContext2D,
   strokes: HandStroke[],
-  activeStroke: HandStroke = [],
+  activeStroke: HandStroke = { points: [], mode: 'pen' },
 ) {
   const ratio = window.devicePixelRatio || 1;
+  context.globalCompositeOperation = 'source-over';
   context.clearRect(0, 0, canvas.width / ratio, canvas.height / ratio);
   strokes.forEach((stroke) => drawHandStroke(context, stroke));
 
-  if (activeStroke.length > 0) {
+  if (activeStroke.points.length > 0) {
     drawHandStroke(context, activeStroke);
   }
+
+  context.globalCompositeOperation = 'source-over';
 }
 
 export function exportHandwritingDataUrl(

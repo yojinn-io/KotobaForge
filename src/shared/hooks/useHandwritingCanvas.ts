@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { HandPoint, HandStroke } from '../lib/handwriting';
+import type { DrawingMode, HandPoint, HandStroke } from '../lib/handwriting';
 import {
   exportHandwritingDataUrl,
   redrawHandwriting,
@@ -27,10 +27,11 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const strokesRef = useRef<HandStroke[]>([]);
-  const currentStrokeRef = useRef<HandStroke>([]);
+  const currentStrokeRef = useRef<HandStroke>({ points: [], mode: 'pen' });
   const pointerIdRef = useRef<number | null>(null);
   const onStateChangeRef = useRef(onStateChange);
   const [strokeCount, setStrokeCount] = useState(0);
+  const [drawingMode, setDrawingMode] = useState<DrawingMode>('pen');
 
   useEffect(() => {
     onStateChangeRef.current = onStateChange;
@@ -61,17 +62,26 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
 
   const clear = useCallback(() => {
     strokesRef.current = [];
-    currentStrokeRef.current = [];
+    currentStrokeRef.current = { points: [], mode: 'pen' };
     setStrokeCount(0);
+    setDrawingMode('pen');
     redraw();
   }, [redraw]);
 
   const undo = useCallback(() => {
-    currentStrokeRef.current = [];
+    currentStrokeRef.current = { points: [], mode: drawingMode };
     strokesRef.current.pop();
     setStrokeCount(strokesRef.current.length);
     redraw();
-  }, [redraw]);
+  }, [drawingMode, redraw]);
+
+  const toggleDrawingMode = useCallback(() => {
+    setDrawingMode((mode) => (mode === 'pen' ? 'eraser' : 'pen'));
+  }, []);
+
+  const resetDrawingMode = useCallback(() => {
+    setDrawingMode('pen');
+  }, []);
 
   const getPngDataUrl = useCallback(() => {
     const canvas = canvasRef.current;
@@ -127,7 +137,10 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
       event.preventDefault();
       pointerIdRef.current = event.pointerId;
       canvas.setPointerCapture(event.pointerId);
-      currentStrokeRef.current = [getCanvasPoint(event, canvas)];
+      currentStrokeRef.current = {
+        points: [getCanvasPoint(event, canvas)],
+        mode: drawingMode,
+      };
       redraw();
     };
 
@@ -137,7 +150,7 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
       }
 
       event.preventDefault();
-      currentStrokeRef.current.push(getCanvasPoint(event, canvas));
+      currentStrokeRef.current.points.push(getCanvasPoint(event, canvas));
       redraw();
     };
 
@@ -153,9 +166,12 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
         canvas.releasePointerCapture(event.pointerId);
       }
 
-      if (currentStrokeRef.current.length > 0) {
-        strokesRef.current.push([...currentStrokeRef.current]);
-        currentStrokeRef.current = [];
+      if (currentStrokeRef.current.points.length > 0) {
+        strokesRef.current.push({
+          mode: currentStrokeRef.current.mode,
+          points: [...currentStrokeRef.current.points],
+        });
+        currentStrokeRef.current = { points: [], mode: drawingMode };
         setStrokeCount(strokesRef.current.length);
       }
 
@@ -182,12 +198,16 @@ export function useHandwritingCanvas({ onStateChange }: UseHandwritingCanvasOpti
       canvas.removeEventListener('pointercancel', onPointerEnd);
       observer?.disconnect();
     };
-  }, [redraw, resizeCanvas]);
+  }, [drawingMode, redraw, resizeCanvas]);
 
   return {
     canvasRef,
     clear,
     undo,
+    drawingMode,
+    setDrawingMode,
+    toggleDrawingMode,
+    resetDrawingMode,
     resizeCanvas,
     getPngDataUrl,
     downloadPng,

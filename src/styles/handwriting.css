@@ -152,6 +152,10 @@
   cursor: crosshair;
 }
 
+.handwriting-canvas__surface--eraser .handwriting-canvas__element {
+  cursor: cell;
+}
+
 .handwriting-canvas__overlay {
   position: absolute;
   inset: 0;
@@ -225,6 +229,16 @@
   width: 36px;
   min-width: 36px;
   padding: 0;
+}
+
+.handwriting-mode-button {
+  min-width: 92px;
+}
+
+.handwriting-mode-button--active {
+  border-color: rgba(159, 211, 199, 0.24);
+  background: rgba(159, 211, 199, 0.13);
+  color: #e8fff9;
 }
 
 .practice-feedback-card {
@@ -555,6 +569,278 @@
   }
 
   .vocabulary-history-radar {
+    min-height: 188px;
+  }
+}
+
+.sentence-practice-card .practice-pane-card__body {
+  height: 100%;
+  gap: 8px;
+}
+
+.sentence-practice-card .practice-prompt-title {
+  flex: 0 0 auto;
+}
+
+.sentence-hint-row {
+  flex: 0 0 34px;
+  min-height: 34px;
+  max-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sentence-hint-label {
+  flex: 0 0 auto;
+  color: #b9c8ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.sentence-hint-content {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sentence-hint-row .practice-toggle {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 0.28rem 0.64rem;
+}
+
+.sentence-practice-card .practice-question-card {
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.sentence-practice-card .handwriting-canvas {
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 8px;
+}
+
+.sentence-practice-card .handwriting-canvas__surface {
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: 100%;
+  border-radius: 12px;
+}
+
+.sentence-practice-card .handwriting-canvas__toolbar {
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.sentence-practice-card .practice-feedback-card {
+  padding: 8px 2px 0;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+}
+
+.sentence-practice-card .practice-status-banner {
+  min-height: 34px;
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+
+.sentence-practice-card .practice-answer-line {
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.sentence-practice-card .practice-feedback-grid {
+  grid-template-columns: minmax(0, 132px) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.sentence-practice-card .practice-snapshot,
+.sentence-practice-card .practice-snapshot--empty {
+  min-height: 64px;
+  max-height: 92px;
+  border-radius: 12px;
+}
+
+.sentence-feedback-actions {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sentence-feedback-actions .practice-help {
+  margin: 0;
+}
+
+.sentence-summary-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(64px, auto) minmax(0, 1fr);
+  gap: 8px 10px;
+}
+
+.sentence-summary-list dt {
+  color: #b9c8ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.sentence-summary-list dd {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sentence-summary-list strong {
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.sentence-summary-list span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.3;
+}
+
+.sentence-grammar-card .panel-card__body {
+  padding: 8px 10px 10px;
+}
+
+.sentence-grammar-radar {
+  flex: 1 1 auto;
+  min-height: 210px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .sentence-practice-card .practice-question-card {
+    padding: 8px;
+  }
+
+  .sentence-practice-card .practice-feedback-grid {
+    grid-template-columns: minmax(0, 118px) minmax(0, 1fr);
+  }
+
+  .sentence-grammar-card .panel-card__body {
+    padding: 6px 8px 8px;
+  }
+
+.sentence-grammar-radar {
+    min-height: 188px;
+  }
+}
+
+.diary-practice-card .practice-pane-card__body {
+  height: 100%;
+  gap: 8px;
+}
+
+.diary-practice-card .practice-prompt-title {
+  flex: 0 0 auto;
+}
+
+.diary-assist-row {
+  flex: 0 0 34px;
+  min-height: 34px;
+  max-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.diary-assist-label {
+  flex: 0 0 auto;
+  color: #b9c8ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.diary-assist-content {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diary-practice-card .practice-question-card {
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.diary-practice-card .handwriting-canvas {
+  flex: 1 1 0;
+  min-height: 0;
+  gap: 8px;
+}
+
+.diary-practice-card .handwriting-canvas__surface {
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: 100%;
+  border-radius: 12px;
+}
+
+.diary-practice-card .handwriting-canvas__toolbar {
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.diary-analysis-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(64px, auto) minmax(0, 1fr);
+  gap: 8px 10px;
+}
+
+.diary-analysis-list dt {
+  color: #b9c8ff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.diary-analysis-list dd {
+  margin: 0;
+  min-width: 0;
+  color: rgba(246, 247, 248, 0.88);
+  font-size: 0.82rem;
+  line-height: 1.38;
+}
+
+.diary-score-radar {
+  flex: 1 1 auto;
+  min-height: 210px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .diary-practice-card .practice-question-card {
+    padding: 8px;
+  }
+
+  .diary-score-radar {
     min-height: 188px;
   }
 }

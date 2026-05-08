@@ -12,6 +12,7 @@ export type SentenceItem = {
   particleCheck: string;
   naturalness: string;
   completeness: string;
+  grammarRadarScores: [number, number, number, number];
 };
 
 export const sentenceItems: SentenceItem[] = [
@@ -30,6 +31,7 @@ export const sentenceItems: SentenceItem[] = [
     particleCheck: '逆接の「が」は自然ですが、後半を少し整理できます。',
     naturalness: '条件節を先に置くとさらに滑らかです。',
     completeness: '一文として成立しています。',
+    grammarRadarScores: [78, 70, 74, 82],
   },
   {
     id: 'naikoto-wa-nai',
@@ -46,6 +48,7 @@ export const sentenceItems: SentenceItem[] = [
     particleCheck: '主題と対比は安定しています。',
     naturalness: '「かなり」などの副詞を入れるとより自然です。',
     completeness: '意味の切れ目ははっきりしています。',
+    grammarRadarScores: [84, 80, 78, 82],
   },
   {
     id: 'kamoshirenai',
@@ -62,5 +65,6 @@ export const sentenceItems: SentenceItem[] = [
     particleCheck: '接続も大きく崩れていません。',
     naturalness: '結論部分はかなり自然です。',
     completeness: '理由から助言まで一文で完結しています。',
+    grammarRadarScores: [88, 82, 86, 90],
   },
 ];

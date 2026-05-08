@@ -38,7 +38,7 @@ export const diaryItems: DiaryItem[] = [
     scores: [
       { label: '文法', value: 80 },
       { label: '語彙', value: 74 },
-      { label: '構成', value: 77 },
+      { label: '展開', value: 77 },
       { label: '自然さ', value: 81 },
     ],
   },
@@ -60,7 +60,7 @@ export const diaryItems: DiaryItem[] = [
     scores: [
       { label: '文法', value: 82 },
       { label: '語彙', value: 79 },
-      { label: '構成', value: 83 },
+      { label: '展開', value: 83 },
       { label: '自然さ', value: 80 },
     ],
   },
@@ -82,7 +82,7 @@ export const diaryItems: DiaryItem[] = [
     scores: [
       { label: '文法', value: 83 },
       { label: '語彙', value: 82 },
-      { label: '構成', value: 85 },
+      { label: '展開', value: 85 },
       { label: '自然さ', value: 84 },
     ],
   },

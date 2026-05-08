@@ -13,6 +13,7 @@ import {
 export type HandwritingCanvasHandle = {
   clear: () => void;
   undo: () => void;
+  resetDrawingMode: () => void;
   getPngDataUrl: () => string | null;
   downloadPng: (fileName?: string) => string | null;
   hasStrokes: () => boolean;
@@ -60,10 +61,20 @@ export const HandwritingCanvas = forwardRef<HandwritingCanvasHandle, Handwriting
       },
       [onStateChange],
     );
-    const { canvasRef, clear, downloadPng, getPngDataUrl, hasStrokes, strokeCount, undo } =
-      useHandwritingCanvas({
-        onStateChange: handleStateChange,
-      });
+    const {
+      canvasRef,
+      clear,
+      downloadPng,
+      drawingMode,
+      getPngDataUrl,
+      hasStrokes,
+      resetDrawingMode,
+      strokeCount,
+      toggleDrawingMode,
+      undo,
+    } = useHandwritingCanvas({
+      onStateChange: handleStateChange,
+    });
 
     const handleExport = () => {
       const dataUrl = downloadPng(exportFileName);
@@ -78,17 +89,32 @@ export const HandwritingCanvas = forwardRef<HandwritingCanvasHandle, Handwriting
       () => ({
         clear,
         undo,
+        resetDrawingMode,
         getPngDataUrl,
         downloadPng: (fileName) => downloadPng(fileName ?? exportFileName),
         hasStrokes: () => hasStrokes,
         getStrokeCount: () => strokeCount,
       }),
-      [clear, downloadPng, exportFileName, getPngDataUrl, hasStrokes, strokeCount, undo],
+      [
+        clear,
+        downloadPng,
+        exportFileName,
+        getPngDataUrl,
+        hasStrokes,
+        resetDrawingMode,
+        strokeCount,
+        undo,
+      ],
     );
 
     return (
       <div className={['handwriting-canvas', className].filter(Boolean).join(' ')}>
-        <div className="handwriting-canvas__surface">
+        <div
+          className={[
+            'handwriting-canvas__surface',
+            `handwriting-canvas__surface--${drawingMode}`,
+          ].join(' ')}
+        >
           <canvas
             ref={canvasRef}
             className="handwriting-canvas__element"
@@ -127,6 +153,27 @@ export const HandwritingCanvas = forwardRef<HandwritingCanvasHandle, Handwriting
             >
               <i className="bi bi-image" />
               PNG保存
+            </button>
+            <button
+              type="button"
+              className={[
+                'practice-button',
+                'practice-button--soft',
+                'handwriting-mode-button',
+                drawingMode === 'eraser' ? 'handwriting-mode-button--active' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
+              onClick={toggleDrawingMode}
+              aria-pressed={drawingMode === 'eraser'}
+              aria-label={
+                drawingMode === 'eraser'
+                  ? '手書きペンモードに戻す'
+                  : '消しゴムモードに切り替える'
+              }
+            >
+              <i className={`bi ${drawingMode === 'eraser' ? 'bi-eraser' : 'bi-pencil'}`} />
+              {drawingMode === 'eraser' ? '消しゴム' : 'ペン'}
             </button>
           </div>
 

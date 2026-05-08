@@ -111,14 +111,7 @@ export function VocabularyPage() {
           <Link to="/" className="practice-button practice-button--icon" aria-label="ホーム">
             <i className="bi bi-house-door" />
           </Link>
-          <button
-            type="button"
-            className="practice-button practice-button--soft"
-            onClick={() => setSwapped((value) => !value)}
-          >
-            <i className="bi bi-arrow-left-right" />
-            左右切替
-          </button>
+          
           <button
             type="button"
             className="practice-button practice-button--soft"
